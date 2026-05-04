@@ -7,7 +7,7 @@ class GetQuoteCreate(BaseModel):
     name: str
     email: EmailStr
     country_code: Optional[str] = None
-    phone: str
+    phone: Optional[str] = None
     service: Optional[str] = None
     quantity: int
     material: str
