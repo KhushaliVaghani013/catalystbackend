@@ -35,32 +35,36 @@ def create_quote(
 ):
     print("API HIT ✅")
 
-    full_phone = None
-    if phone:
-        full_phone = f"{countryCode}{phone}"
+    try:
+        print("API HIT ✅")
 
-    file_path = None
+        full_phone = None
+        if phone:
+            full_phone = f"{countryCode}{phone}"
 
-    if file and file.filename:
-        file_path = os.path.join(UPLOAD_FOLDER, file.filename)
-        file_path = file_path.replace("\\", "/")
+        file_path = None
 
-        with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
+        if file and file.filename:
+            file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+            file_path = file_path.replace("\\", "/")
 
-    data = schemas.GetQuoteCreate(
-        name=name,
-        email=email,
-        phone=full_phone,
-        service=service,
-        quantity=quantity,
-        material=material
-    )
+            with open(file_path, "wb") as buffer:
+                shutil.copyfileobj(file.file, buffer)
 
-    quote = crud.create_quote(db, data, file_path)
+        data = schemas.GetQuoteCreate(
+            name=name,
+            email=email,
+            phone=full_phone,
+            service=service,
+            quantity=quantity,
+            material=material
+        )
 
-    return quote
-except Exception as e:
+        quote = crud.create_quote(db, data, file_path)
+
+        return quote
+
+    except Exception as e:
         print("ERROR:", str(e))
         return JSONResponse(status_code=500, content={"error": str(e)})
     # try:
