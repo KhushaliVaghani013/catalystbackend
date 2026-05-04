@@ -7,6 +7,7 @@ class GetQuote(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False)
+    country_code = Column(String, nullable=True)
     phone = Column(String, unique=True, nullable=True)
     service = Column(String, nullable=False)
     quantity = Column(Integer, nullable=False)
