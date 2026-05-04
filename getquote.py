@@ -60,6 +60,9 @@ def create_quote(
     quote = crud.create_quote(db, data, file_path)
 
     return quote
+except Exception as e:
+        print("ERROR:", str(e))
+        return JSONResponse(status_code=500, content={"error": str(e)})
     # try:
     #
     # except Exception as e:
