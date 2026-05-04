@@ -26,6 +26,7 @@ def create_quote(
     name: str = Form(...),
     email: str = Form(...),
     countryCode: str = Form(...),
+    countryCode: str = Form(...),
     phone: str = Form(None),
     service: str = Form(...),
     quantity: int = Form(...),
@@ -54,6 +55,7 @@ def create_quote(
         data = schemas.GetQuoteCreate(
             name=name,
             email=email,
+            country_code=countryCode, 
             phone=full_phone,
             service=service,
             quantity=quantity,
