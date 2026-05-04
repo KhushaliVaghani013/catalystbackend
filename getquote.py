@@ -25,8 +25,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 def create_quote(
     name: str = Form(...),
     email: str = Form(...),
-    countryCode: str = Form(...),
-    countryCode: str = Form(...),
+    countryCode: str = Form(None),   # ✅ from React
     phone: str = Form(None),
     service: str = Form(...),
     quantity: int = Form(...),
