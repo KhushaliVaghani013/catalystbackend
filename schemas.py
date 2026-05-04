@@ -6,6 +6,7 @@ from pydantic import BaseModel, EmailStr, field_validator
 class GetQuoteCreate(BaseModel):
     name: str
     email: EmailStr
+    country_code: Optional[str] = None
     phone: str
     service: Optional[str] = None
     quantity: int
