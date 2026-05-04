@@ -25,6 +25,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 def create_quote(
     name: str = Form(...),
     email: str = Form(...),
+    countryCode: str = Form(...),
     phone: str = Form(None),
     service: str = Form(...),
     quantity: int = Form(...),
@@ -33,6 +34,10 @@ def create_quote(
     db: Session = Depends(get_db)
 ):
     print("API HIT ✅")
+
+    full_phone = None
+    if phone:
+        full_phone = f"{countryCode}{phone}"
 
     file_path = None
 
@@ -46,7 +51,7 @@ def create_quote(
     data = schemas.GetQuoteCreate(
         name=name,
         email=email,
-        phone=phone,
+        phone=full_phone,
         service=service,
         quantity=quantity,
         material=material
