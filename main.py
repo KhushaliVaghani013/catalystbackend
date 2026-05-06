@@ -22,4 +22,3 @@ Base.metadata.create_all(bind=engine)
 
 # Include router
 app.include_router(getquote.router)
-
