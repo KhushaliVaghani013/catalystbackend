@@ -1,18 +1,18 @@
 import re
-from typing import Optional
+from typing import Optional, Union
 from pydantic import BaseModel, EmailStr, field_validator
 
 
 class GetQuoteCreate(BaseModel):
     name: str
     email: EmailStr
-    country_code: Optional[str] = None
-    phone: Optional[str] = None
+    country_code: str
+    phone: Union[str, int]
     service: Optional[str] = None
     quantity: int
     material: str
 
-    @field_validator("phone")
+    @field_validator("phone", mode='before')
     def validate_phone(cls, v):
         if v is None:
             return v
