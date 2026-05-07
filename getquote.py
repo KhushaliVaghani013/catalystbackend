@@ -25,7 +25,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 def create_quote(
     name: str = Form(...),
     email: str = Form(...),
-    country_code: str = Form(...),
+    countryCode: str = Form(...),
     phone: int = Form(None),
     service: str = Form(...),
     quantity: int = Form(...),
@@ -47,7 +47,7 @@ def create_quote(
     data = schemas.GetQuoteCreate(
         name=name,
         email=email,
-        country_code=country_code,
+        countryCode=countryCode,
         phone=str(phone),
         service=service,
         quantity=quantity,
