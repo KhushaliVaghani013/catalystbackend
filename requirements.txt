@@ -2,8 +2,8 @@ fastapi
 uvicorn
 SQLAlchemy
 pymysql
-python-dotenv
-cryptography
+python-multipart
+pydantic[email]
 annotated-doc==0.0.4
 annotated-types==0.7.0
 anyio==4.13.0
